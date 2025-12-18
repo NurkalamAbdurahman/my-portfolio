@@ -2,7 +2,7 @@ import About from "../component/about/About";
 import Achievements from "../component/achievement/Achievements";
 import Contact from "../component/contact/Contact";
 import Experience from "../component/experience/Experience";
-import Hero from "../component/hero/hero";
+import Hero from "../component/hero/Hero";
 import Project from "../component/projects/Project";
 import Skills from "../component/skill/Skills";
 
