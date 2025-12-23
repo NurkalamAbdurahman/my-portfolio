@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "experience": "Experience",
+        "home": "Home",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
+    "hero": {
+        "greeting": "Hello",
+        "name": "I’m Nurkalam",
+        "role": "Front-End Developer",
+        "description": "I design and develop structured, scalable, and maintainable web interfaces with a strong focus on React-based UI systems.",
+        "ctaPrimary": "View Projects",
+        "ctaSecondary": "Contact"
+    },
+    "lang": {
+        "id": "ID",
+        "en": "EN"
+    }
+}

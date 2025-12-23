@@ -1,193 +1,118 @@
-// components/Navbar.jsx
-import React, { useState, useEffect, useCallback } from 'react';
-import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from "react";
+import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
+    { key: "about", href: "#about" },
+    { key: "skills", href: "#skills" },
+    { key: "projects", href: "#projects" },
+    { key: "experience", href: "#experience" }
   ];
 
-  const socialItems = [
-    { icon: <Github size={20} />, href: 'https://github.com/username', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, href: 'https://linkedin.com/in/username', label: 'LinkedIn' },
-    { icon: <Mail size={20} />, href: 'mailto:email@example.com', label: 'Email' },
-  ];
-
-  // Optimasi dengan useCallback
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
   }, []);
 
   useEffect(() => {
-    const scrollHandler = () => handleScroll();
-    
-    window.addEventListener('scroll', scrollHandler, { passive: true });
-    
-    // Cleanup lebih aman
-    return () => window.removeEventListener('scroll', scrollHandler);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Handle klik di mobile menu untuk smooth scroll
   const handleNavClick = (e, href) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       e.preventDefault();
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
 
-  // Handle klik di luar untuk menutup mobile menu
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isMenuOpen && !e.target.closest('.navbar-container')) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    if (isMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-
-  // Handle escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape' && isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isMenuOpen]);
+  const setLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 navbar-container ${
-        isScrolled 
-          ? 'bg-white/90 backdrop-blur-lg shadow-sm py-1' 
-          : 'bg-white/80 backdrop-blur-md py-2'
-      }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      {/* Border bottom dengan width terbatas */}
-      <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent transition-all duration-300 ${
-        isScrolled ? 'w-4/5' : 'w-3/4'
-      }`} />
-      
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-14 md:h-16">
-          
-          {/* Logo/Identitas */}
-          <div className="flex items-center">
-            <a 
-              href="/" 
-              className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
-              aria-label="Home"
+    <nav className={`fixed top-0 w-full z-50 transition ${
+      isScrolled ? "bg-white shadow-sm" : "bg-white/80 backdrop-blur"
+    }`}>
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+
+        {/* Logo */}
+        <a href="/" className="text-xl font-semibold text-gray-900">
+          Nurkalam
+        </a>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map(item => (
+            <a
+              key={item.key}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="text-gray-700 hover:text-blue-600 font-medium"
             >
-              Nurkalam
+              {t(`nav.${item.key}`)}
             </a>
-          </div>
+          ))}
+        </div>
 
-          {/* Navigasi Utama (Desktop) */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group py-2 px-1"
-                aria-label={`Navigate to ${item.label}`}
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-          </div>
-
-          {/* Social Links (Desktop) */}
-          <div className="hidden md:flex items-center space-x-2">
-            {socialItems.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                title={social.label}
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
+        {/* Language Toggle — CLASSIC */}
+        <div className="hidden md:flex items-center text-sm font-medium text-gray-600 gap-2">
           <button
-            className="md:hidden p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMenuOpen}
+            onClick={() => setLanguage("id")}
+            className={`px-2 ${
+              i18n.language === "id" ? "text-gray-900 underline" : ""
+            }`}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            ID
+          </button>
+          <span>|</span>
+          <button
+            onClick={() => setLanguage("en")}
+            className={`px-2 ${
+              i18n.language === "en" ? "text-gray-900 underline" : ""
+            }`}
+          >
+            EN
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div 
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen 
-              ? 'max-h-96 opacity-100 visible' 
-              : 'max-h-0 opacity-0 invisible'
-          }`}
+        {/* Mobile Button */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          <div className="bg-white/90 backdrop-blur-lg border-t border-gray-100 py-3">
-            {/* Navigation Items */}
-            <div className="space-y-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium"
-                  aria-label={`Navigate to ${item.label}`}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+          {isMenuOpen ? <X /> : <Menu />}
+        </button>
+      </div>
 
-            {/* Social Links */}
-            <div className="flex justify-center space-x-3 mt-4 pt-4 border-t border-gray-100 px-4">
-              {socialItems.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="p-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t">
+          {navItems.map(item => (
+            <a
+              key={item.key}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="block px-4 py-3"
+            >
+              {t(`nav.${item.key}`)}
+            </a>
+          ))}
+
+          <div className="flex justify-center gap-4 py-3 border-t text-sm">
+            <button onClick={() => setLanguage("id")}>ID</button>
+            <button onClick={() => setLanguage("en")}>EN</button>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

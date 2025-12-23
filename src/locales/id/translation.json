@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "about": "Tentang",
+        "skills": "Keahlian",
+        "projects": "Proyek",
+        "experience": "Pengalaman",
+        "home": "Beranda",
+        "openMenu": "Buka menu",
+        "closeMenu": "Tutup menu"
+    },
+    "hero": {
+        "greeting": "Halo",
+        "name": "saya Nurkalam",
+        "role": "Front-End Developer",
+        "description": "Saya merancang dan mengembangkan antarmuka web yang terstruktur, scalable, dan mudah dipelihara dengan fokus pada sistem UI berbasis React.",
+        "ctaPrimary": "Lihat Proyek",
+        "ctaSecondary": "Kontak"
+    },
+    "lang": {
+        "id": "ID",
+        "en": "EN"
+    }
+}
