@@ -42,7 +42,7 @@ const Hero = () => {
             </h2>
 
             {/* Description - spacing diperbesar */}
-            <p className="max-w-xl text-slate-600 text-lg leading-relaxed mb-8 sm:mb-10 text-balance">
+            <p className="max-w-2xl text-slate-600 text-lg leading-relaxed mb-8 sm:mb-10 text-balance">
               {t("hero.description")}
             </p>
 
@@ -80,9 +80,9 @@ const Hero = () => {
 
                 <div className="flex items-center gap-4">
                   {[
-                    { icon: Instagram, link: "#" },
-                    { icon: Linkedin, link: "#" },
-                    { icon: Github, link: "#" },
+                    { icon: Instagram, link: "https://www.instagram.com/nurkalamaz/" },
+                    { icon: Linkedin, link: "https://www.linkedin.com/in/nurkalam-abdurrahman-516097383/" },
+                    { icon: Github, link: "https://github.com/NurkalamAbdurahman" },
                   ].map(({ icon: Icon, link }, index) => (
                     <a
                       key={index}
