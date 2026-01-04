@@ -6,7 +6,7 @@ export const projectsConfig = {
     image: image1,
     featured: true,
     githubLink: 'https://github.com/NurkalamAbdurahman/GoTask-FE',
-    caseStudyLink: '/case-study/gotask',
+    caseStudyLink: '/case-study',
     tech: [
       'React',
       'Vite',

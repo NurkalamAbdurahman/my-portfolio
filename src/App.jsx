@@ -10,7 +10,7 @@ function App() {
         {/* Route dengan Layout utama */}
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/case-study/gotask" element={<CaseStudy />} />
+          <Route path="/case-study" element={<CaseStudy />} />
           
           {/* Redirect untuk rute yang tidak ada - OPSIONAL */}
           <Route path="*" element={<Navigate to="/" replace />} />
