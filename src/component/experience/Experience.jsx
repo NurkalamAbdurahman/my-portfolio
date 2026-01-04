@@ -1,45 +1,27 @@
+import React from "react";
+import { useTranslation } from "react-i18next";
+
 const Experience = () => {
-  const experiences = [
-    {
-      role: 'Frontend Developer — Team Project',
-      company: 'GoTask (Academic Project)',
-      period: '2024',
-      description: [
-        'Developed responsive user interfaces using React and Tailwind CSS for a task management web application.',
-        'Collaborated closely with a backend developer to integrate REST APIs and manage application state.',
-        'Implemented core features such as task boards, workspace management, and interactive UI components.',
-        'Focused on clean component structure, maintainability, and consistent UI behavior.'
-      ]
-    },
-    {
-      role: 'Intern — Production Division',
-      company: 'Laptop Manufacturing Company',
-      period: '2023',
-      description: [
-        'Assisted in laptop production and assembly processes following industrial SOP standards.',
-        'Participated in quality control checks to ensure product accuracy and reliability.',
-        'Worked collaboratively within a production team to meet daily operational targets.',
-        'Developed strong discipline, responsibility, and understanding of industrial workflows.'
-      ]
-    }
-  ];
+  const { t } = useTranslation();
+  const items = t("experience.items", { returnObjects: true });
 
   return (
     <section id="experience" className="py-20 bg-gray-50">
       <div className="mx-auto max-w-6xl px-6">
+        
         {/* Section Header */}
         <div className="mb-14 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Experience
+            {t("experience.title")}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hands-on experience from team-based development projects and real-world industrial environments.
+            {t("experience.subtitle")}
           </p>
         </div>
 
         {/* Experience List */}
         <div className="space-y-8">
-          {experiences.map((exp, index) => (
+          {items.map((exp, index) => (
             <div
               key={index}
               className="bg-white border border-gray-200 rounded-2xl p-8"
@@ -66,6 +48,7 @@ const Experience = () => {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

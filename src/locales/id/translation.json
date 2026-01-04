@@ -16,6 +16,269 @@
         "ctaPrimary": "Lihat Proyek",
         "ctaSecondary": "Kontak"
     },
+    "about": {
+        "title": {
+            "primary": "Tentang",
+            "highlight": "Saya"
+        },
+        "subtitle": "Gambaran singkat mengenai latar belakang, pendekatan kerja, dan fokus saya sebagai frontend developer.",
+        "profile": {
+            "title": "Profil",
+            "desc": "Saya merupakan mahasiswa Teknik Informatika dengan minat utama pada pengembangan frontend, khususnya dalam membangun antarmuka yang terstruktur, konsisten, dan mudah dipelihara menggunakan React."
+        },
+        "tech": {
+            "title": "Fokus Teknologi",
+            "desc": "Saya berfokus pada pengembangan frontend modern berbasis React, dengan perhatian pada arsitektur komponen yang rapi, pola UI yang dapat digunakan ulang, serta desain yang responsif."
+        },
+        "work": {
+            "title": "Pendekatan Kerja",
+            "desc": "Saya mengembangkan proyek secara bertahap, dimulai dari fungsi inti, kemudian menyempurnakan struktur kode, keterbacaan, dan pengalaman pengguna melalui proses iterasi."
+        },
+        "performance": {
+            "title": "Performa",
+            "desc": "Saya memperhatikan aspek dasar performa frontend, seperti efisiensi rendering, pengelolaan state yang bersih, serta optimalisasi penggunaan aset."
+        },
+        "goals": {
+            "title": "Fokus & Tujuan",
+            "desc": "Fokus utama saya saat ini adalah memperkuat fondasi frontend melalui proyek nyata dan pembelajaran berkelanjutan.",
+            "list": [
+                "Struktur dan Arsitektur Komponen React",
+                "UI Responsif menggunakan Tailwind CSS",
+                "Dasar-dasar Performa Frontend",
+                "Integrasi API dan Pengelolaan State"
+            ]
+        }
+    },
+    "skills": {
+        "title": "Keahlian",
+        "subtitle": "Keahlian frontend utama yang diterapkan dalam proyek nyata dan pengembangan kolaboratif.",
+        "groups": [
+            {
+                "key": "frontend",
+                "title": "Frontend Development",
+                "items": [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript (ES6+)",
+                    "React.js",
+                    "Vite"
+                ]
+            },
+            {
+                "key": "ui",
+                "title": "UI & Styling",
+                "items": [
+                    "Tailwind CSS",
+                    "Responsive Design",
+                    "Design System",
+                    "Component-based UI"
+                ]
+            },
+            {
+                "key": "state",
+                "title": "State & Data Handling",
+                "items": [
+                    "Zustand",
+                    "React Query",
+                    "REST API Integration",
+                    "Async State Management"
+                ]
+            },
+            {
+                "key": "performance",
+                "title": "Interaction & Performance",
+                "items": [
+                    "Drag & Drop (dnd-kit)",
+                    "Optimistic UI",
+                    "Code Splitting",
+                    "Lazy Loading"
+                ]
+            },
+            {
+                "key": "tools",
+                "title": "Tools & Workflow",
+                "items": [
+                    "Git & GitHub",
+                    "Project-based Development",
+                    "Backend Collaboration",
+                    "Clean Code Practices"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "sectionTitle": "Proyek Pilihan",
+        "sectionSubtitle": "Aplikasi web nyata yang berfokus pada skalabilitas, kegunaan, dan arsitektur frontend yang mudah dipelihara.",
+        "featuredLabel": "Proyek Unggulan",
+        "github": "GitHub",
+        "caseStudy": "Studi Kasus",
+        "viewAll": "Lihat Semua Proyek di GitHub",
+        "items": [
+            {
+                "id": "gotask",
+                "title": "GoTask — Manajemen Workspace & Tugas",
+                "summary": "Aplikasi manajemen tugas terinspirasi Trello yang berfokus pada kolaborasi tim dan produktivitas.",
+                "description": "Merancang dan mengembangkan arsitektur frontend modular menggunakan React dan Vite. Mengimplementasikan pengelolaan tugas berbasis workspace, fitur drag-and-drop kartu menggunakan dnd-kit, alur undang anggota, serta antarmuka responsif. Fokus pada pengelolaan state yang rapi, komponen yang dapat digunakan ulang, dan pola UI yang skalabel.",
+                "alt": "Antarmuka Aplikasi Manajemen Tugas GoTask"
+            }
+        ]
+    },
+    "caseStudy": {
+        "back": "Kembali ke Proyek",
+        "label": "Studi Kasus",
+        "title": "GoTask — Aplikasi Manajemen Tugas Kolaboratif",
+        "subtitle": "Aplikasi manajemen tugas terinspirasi Trello yang dikembangkan oleh tim kecil, dengan fokus pada UI yang rapi, arsitektur frontend yang skalabel, dan alur kolaborasi yang praktis.",
+        "overview": {
+            "timeline": {
+                "title": "Durasi",
+                "value": "±2 bulan (pengembangan iteratif)"
+            },
+            "role": {
+                "title": "Peran",
+                "value": "Frontend Developer"
+            },
+            "team": {
+                "title": "Tim",
+                "value": "2 orang (1 Frontend, 1 Backend)"
+            }
+        },
+        "techStackTitle": "Tech Stack",
+        "problem": {
+            "title": "Permasalahan",
+            "description": "Tim kecil sering kesulitan mengelola tugas karena penggunaan alat yang terpisah dan alur kerja yang tidak jelas, sehingga mengurangi visibilitas dan produktivitas.",
+            "points": [
+                "Tugas tersebar di aplikasi chat dan catatan pribadi",
+                "Tidak ada kepemilikan tugas dan pelacakan progres yang jelas",
+                "Tools terlalu kompleks untuk kebutuhan tim kecil",
+                "Pengalaman pengguna kurang ramah bagi pengguna baru"
+            ]
+        },
+        "solution": {
+            "title": "Solusi",
+            "description": "GoTask dikembangkan sebagai aplikasi manajemen tugas ringan dengan penekanan pada struktur UI yang jelas, interaksi yang halus, dan pola frontend yang skalabel untuk tim kecil.",
+            "featuresTitle": "Fitur Utama",
+            "features": [
+                "Board tugas berbasis workspace",
+                "Drag and drop kartu tugas menggunakan dnd-kit",
+                "Fitur undang anggota dan tampilan peran",
+                "Tampilan responsif untuk desktop dan mobile"
+            ],
+            "architectureTitle": "Arsitektur Frontend",
+            "architecture": [
+                "Struktur React berbasis komponen",
+                "Lapisan layanan API terpusat",
+                "Komponen UI yang dapat digunakan ulang",
+                "Pemisahan yang jelas antara logika UI dan data"
+            ]
+        },
+        "decisions": {
+            "title": "Keputusan Teknis",
+            "items": [
+                {
+                    "title": "Drag & Drop menggunakan dnd-kit",
+                    "desc": "Dipilih karena fleksibilitas dan dukungan aksesibilitas. Board kosong tetap dibuat droppable untuk menjaga pengalaman pengguna yang konsisten."
+                },
+                {
+                    "title": "Kolaborasi Frontend–Backend",
+                    "desc": "Kontrak API didefinisikan sejak awal bersama backend developer sehingga pengembangan frontend dapat berjalan mandiri dan meminimalkan masalah integrasi."
+                },
+                {
+                    "title": "Konsistensi UI dengan Tailwind CSS",
+                    "desc": "Tailwind CSS digunakan untuk menjaga konsistensi spacing, tipografi, dan warna sekaligus memungkinkan iterasi UI yang cepat."
+                }
+            ]
+        },
+        "outcomes": {
+            "title": "Hasil & Pembelajaran",
+            "points": [
+                "Membangun antarmuka manajemen tugas secara end-to-end",
+                "Mendapatkan pengalaman langsung dengan perilaku drag and drop yang kompleks",
+                "Meningkatkan kemampuan kolaborasi frontend dan backend",
+                "Menerapkan prinsip UI/UX untuk aplikasi produktivitas",
+                "Memperkuat pemahaman arsitektur React yang skalabel"
+            ]
+        },
+        "links": {
+            "source": "Lihat Source Code",
+            "backAll": "Kembali ke Semua Proyek"
+        }
+    },
+    "experience": {
+        "title": "Pengalaman",
+        "subtitle": "Pengalaman langsung dari proyek pengembangan berbasis tim dan lingkungan industri nyata.",
+        "items": [
+            {
+                "role": "Frontend Developer — Proyek Tim",
+                "company": "GoTask (Proyek Akademik)",
+                "period": "2024",
+                "description": [
+                    "Mengembangkan antarmuka pengguna responsif menggunakan React dan Tailwind CSS untuk aplikasi manajemen tugas.",
+                    "Berkolaborasi dengan backend developer dalam integrasi REST API dan pengelolaan state aplikasi.",
+                    "Mengimplementasikan fitur utama seperti task board, manajemen workspace, dan komponen UI interaktif.",
+                    "Berfokus pada struktur komponen yang bersih, mudah dirawat, dan konsistensi perilaku UI."
+                ]
+            },
+            {
+                "role": "Magang — Divisi Produksi",
+                "company": "Perusahaan Manufaktur Laptop",
+                "period": "2023",
+                "description": [
+                    "Membantu proses produksi dan perakitan laptop sesuai standar SOP industri.",
+                    "Berpartisipasi dalam pengecekan quality control untuk memastikan akurasi dan kualitas produk.",
+                    "Bekerja secara kolaboratif dalam tim produksi untuk mencapai target operasional harian.",
+                    "Mengembangkan disiplin kerja, tanggung jawab, dan pemahaman alur kerja industri."
+                ]
+            }
+        ]
+    },
+    "achievements": {
+        "title": "Prestasi",
+        "subtitle": "Penghargaan terpilih dari kompetisi akademik dan inovasi tingkat nasional.",
+        "items": [
+            {
+                "title": "Finalis — Kompetisi Web Design SEFEST 2023",
+                "organizer": "Universitas Surabaya (UBAYA)",
+                "year": "2023",
+                "description": "Terpilih sebagai finalis dalam kompetisi desain web tingkat nasional dengan fokus pada UI/UX, konsistensi layout, dan komunikasi visual."
+            },
+            {
+                "title": "Juara 2 — Invention Competition 2024",
+                "organizer": "Universitas Udayana",
+                "year": "2024",
+                "description": "Meraih juara kedua melalui presentasi proyek inovasi berbasis web yang dinilai dari sisi inovasi, kegunaan, dan kelayakan teknis."
+            }
+        ]
+    },
+    "contact": {
+        "title": "Kontak",
+        "subtitle": "Tertarik untuk bekerja sama atau mendiskusikan sebuah proyek? Silakan hubungi saya melalui kanal berikut.",
+        "items": [
+            {
+                "type": "email",
+                "title": "Email",
+                "description": "Untuk diskusi proyek atau peluang kolaborasi",
+                "label": "Nurkalam.az@gmail.com",
+                "href": "mailto:Nurkalam.az@gmail.com",
+                "external": false
+            },
+            {
+                "type": "github",
+                "title": "GitHub",
+                "description": "Melihat kode, proyek, dan kontribusi open-source",
+                "label": "github.com/Nurkalam",
+                "href": "https://github.com/NurkalamAbdurahman",
+                "external": true
+            },
+            {
+                "type": "linkedin",
+                "title": "LinkedIn",
+                "description": "Profil profesional dan pengalaman kerja",
+                "label": "linkedin.com/in/Nurkalam",
+                "href": "https://www.linkedin.com/in/nurkalam-abdurrahman-516097383/",
+                "external": true
+            }
+        ]
+    },
     "lang": {
         "id": "ID",
         "en": "EN"

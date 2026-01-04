@@ -16,6 +16,269 @@
         "ctaPrimary": "View Projects",
         "ctaSecondary": "Contact"
     },
+    "about": {
+        "title": {
+            "primary": "About",
+            "highlight": "Me"
+        },
+        "subtitle": "A brief overview of who I am, how I work, and what I focus on as a frontend developer.",
+        "profile": {
+            "title": "Profile",
+            "desc": "I am an Informatics Engineering student with a strong interest in frontend development, focusing on building structured and maintainable user interfaces using React."
+        },
+        "tech": {
+            "title": "Tech Focus",
+            "desc": "My primary focus is modern frontend development with React, emphasizing clean component architecture, reusable UI patterns, and responsive design."
+        },
+        "work": {
+            "title": "How I Work",
+            "desc": "I build projects incrementally, starting from core functionality and refining structure, readability, and user experience through iteration."
+        },
+        "performance": {
+            "title": "Performance",
+            "desc": "I pay attention to performance fundamentals such as efficient rendering, clean state management, and optimized asset usage."
+        },
+        "goals": {
+            "title": "Focus & Goals",
+            "desc": "My current goal is to strengthen my frontend fundamentals through real-world projects and continuous learning.",
+            "list": [
+                "React Component Structure",
+                "Responsive UI with Tailwind CSS",
+                "Frontend Performance Basics",
+                "API Integration & State Handling"
+            ]
+        }
+    },
+    "skills": {
+        "title": "Skills",
+        "subtitle": "Core frontend skills applied in real-world projects and collaborative development.",
+        "groups": [
+            {
+                "key": "frontend",
+                "title": "Frontend Development",
+                "items": [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript (ES6+)",
+                    "React.js",
+                    "Vite"
+                ]
+            },
+            {
+                "key": "ui",
+                "title": "UI & Styling",
+                "items": [
+                    "Tailwind CSS",
+                    "Responsive Design",
+                    "Design Systems",
+                    "Component-Based UI"
+                ]
+            },
+            {
+                "key": "state",
+                "title": "State & Data Management",
+                "items": [
+                    "Zustand",
+                    "React Query",
+                    "REST API Integration",
+                    "Asynchronous State Management"
+                ]
+            },
+            {
+                "key": "performance",
+                "title": "Interaction & Performance",
+                "items": [
+                    "Drag and Drop (dnd-kit)",
+                    "Optimistic UI",
+                    "Code Splitting",
+                    "Lazy Loading"
+                ]
+            },
+            {
+                "key": "tools",
+                "title": "Tools & Workflow",
+                "items": [
+                    "Git & GitHub",
+                    "Project-Based Development",
+                    "Collaboration with Backend Developers",
+                    "Clean Code Practices"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "sectionTitle": "Selected Projects",
+        "sectionSubtitle": "Real-world web applications focused on scalability, usability, and maintainable frontend architecture.",
+        "featuredLabel": "Featured Project",
+        "github": "GitHub",
+        "caseStudy": "Case Study",
+        "viewAll": "View All Projects on GitHub",
+        "items": [
+            {
+                "id": "gotask",
+                "title": "GoTask — Workspace & Task Management",
+                "summary": "A Trello-inspired task management web app focused on team collaboration and productivity.",
+                "description": "Designed and developed a modular frontend architecture using React and Vite. Implemented workspace-based task organization, drag-and-drop card management with dnd-kit, member invitation flow, and responsive UI. Emphasis on clean state handling, reusable components, and scalable UI patterns.",
+                "alt": "GoTask Task Management Application Interface"
+            }
+        ]
+    },
+    "caseStudy": {
+        "back": "Back to Projects",
+        "label": "Case Study",
+        "title": "GoTask — Collaborative Task Management App",
+        "subtitle": "A Trello-inspired task management application built by a small team, focusing on clean UI, scalable frontend architecture, and practical collaboration workflows.",
+        "overview": {
+            "timeline": {
+                "title": "Timeline",
+                "value": "~2 months (iterative development)"
+            },
+            "role": {
+                "title": "Role",
+                "value": "Frontend Developer"
+            },
+            "team": {
+                "title": "Team",
+                "value": "2 people (1 Frontend, 1 Backend)"
+            }
+        },
+        "techStackTitle": "Tech Stack",
+        "problem": {
+            "title": "The Problem",
+            "description": "Small teams often struggle to manage tasks effectively due to scattered tools and unclear workflows, leading to poor visibility and reduced productivity.",
+            "points": [
+                "Tasks spread across chat applications and personal notes",
+                "No clear task ownership or progress tracking",
+                "Overly complex tools for simple team needs",
+                "Poor user experience for new or non-technical users"
+            ]
+        },
+        "solution": {
+            "title": "The Solution",
+            "description": "GoTask was built as a lightweight task management application that emphasizes clear UI structure, smooth interactions, and scalable frontend patterns suitable for small teams.",
+            "featuresTitle": "Key Features",
+            "features": [
+                "Workspace-based task boards",
+                "Drag and drop task cards using dnd-kit",
+                "Member invitation and role display",
+                "Responsive layout for desktop and mobile"
+            ],
+            "architectureTitle": "Frontend Architecture",
+            "architecture": [
+                "Component-driven React structure",
+                "Centralized API service layer",
+                "Reusable UI components",
+                "Clear separation between UI and data logic"
+            ]
+        },
+        "decisions": {
+            "title": "Technical Decisions",
+            "items": [
+                {
+                    "title": "Drag & Drop with dnd-kit",
+                    "desc": "Chosen for its flexibility and accessibility support. Implemented droppable empty boards to ensure a smooth user experience even when columns contain no tasks."
+                },
+                {
+                    "title": "Frontend–Backend Collaboration",
+                    "desc": "Defined API contracts early with the backend developer, allowing frontend development to progress independently and reducing integration issues."
+                },
+                {
+                    "title": "UI Consistency with Tailwind CSS",
+                    "desc": "Used Tailwind CSS to maintain consistent spacing, typography, and color usage while enabling rapid UI iteration."
+                }
+            ]
+        },
+        "outcomes": {
+            "title": "Outcomes & Learnings",
+            "points": [
+                "Built a complete task management UI from scratch",
+                "Gained hands-on experience with complex drag and drop behavior",
+                "Improved collaboration between frontend and backend roles",
+                "Applied UI/UX principles for productivity-focused interfaces",
+                "Strengthened understanding of scalable React architecture"
+            ]
+        },
+        "links": {
+            "source": "View Source Code",
+            "backAll": "Back to All Projects"
+        }
+    },
+    "experience": {
+        "title": "Experience",
+        "subtitle": "Hands-on experience from team-based development projects and real-world industrial environments.",
+        "items": [
+            {
+                "role": "Frontend Developer — Team Project",
+                "company": "GoTask (Academic Project)",
+                "period": "2024",
+                "description": [
+                    "Developed responsive user interfaces using React and Tailwind CSS for a task management web application.",
+                    "Collaborated closely with a backend developer to integrate REST APIs and manage application state.",
+                    "Implemented core features such as task boards, workspace management, and interactive UI components.",
+                    "Focused on clean component structure, maintainability, and consistent UI behavior."
+                ]
+            },
+            {
+                "role": "Intern — Production Division",
+                "company": "Laptop Manufacturing Company",
+                "period": "2023",
+                "description": [
+                    "Assisted in laptop production and assembly processes following industrial SOP standards.",
+                    "Participated in quality control checks to ensure product accuracy and reliability.",
+                    "Worked collaboratively within a production team to meet daily operational targets.",
+                    "Developed strong discipline, responsibility, and understanding of industrial workflows."
+                ]
+            }
+        ]
+    },
+    "achievements": {
+        "title": "Achievements",
+        "subtitle": "Selected recognitions from national academic and innovation competitions.",
+        "items": [
+            {
+                "title": "Finalist — SEFEST 2023 Web Design Competition",
+                "organizer": "Universitas Surabaya (UBAYA)",
+                "year": "2023",
+                "description": "Selected as a finalist in a national-level web design competition, focusing on UI/UX design, layout consistency, and visual communication."
+            },
+            {
+                "title": "2nd Place — Invention Competition 2024",
+                "organizer": "Universitas Udayana",
+                "year": "2024",
+                "description": "Awarded 2nd place for presenting a web-based invention project, evaluated on innovation, usability, and technical feasibility."
+            }
+        ]
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Interested in working together or discussing a project? Feel free to reach out through the channels below.",
+        "items": [
+            {
+                "type": "email",
+                "title": "Email",
+                "description": "For project discussions or collaboration opportunities",
+                "label": "Nurkalam.az@gmail.com",
+                "href": "mailto:Nurkalam.az@gmail.com",
+                "external": false
+            },
+            {
+                "type": "github",
+                "title": "GitHub",
+                "description": "View code, projects, and open-source contributions",
+                "label": "github.com/Nurkalam",
+                "href": "https://github.com/NurkalamAbdurahman",
+                "external": true
+            },
+            {
+                "type": "linkedin",
+                "title": "LinkedIn",
+                "description": "Professional profile and work experience",
+                "label": "linkedin.com/in/Nurkalam",
+                "href": "https://www.linkedin.com/in/nurkalam-abdurrahman-516097383/",
+                "external": true
+            }
+        ]
+    },
     "lang": {
         "id": "ID",
         "en": "EN"
