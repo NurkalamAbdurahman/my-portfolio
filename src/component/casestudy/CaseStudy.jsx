@@ -8,6 +8,25 @@ import {
   Zap,
   BarChart,
 } from "lucide-react";
+import { motion } from "framer-motion";
+
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+const stagger = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
 
 const TECH_STACK = [
   "React",
@@ -34,8 +53,12 @@ const CaseStudy = () => {
     >
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
-        {/* Back */}
-        <div className="mb-10">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="mb-10"
+        >
           <a
             href="/"
             className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors"
@@ -43,10 +66,14 @@ const CaseStudy = () => {
             <ArrowLeft size={18} />
             <span className="font-medium">{t("caseStudy.back")}</span>
           </a>
-        </div>
+        </motion.div>
 
-        {/* Header */}
-        <div className="mb-14">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="mb-14"
+        >
           <span className="inline-block mb-4 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">
             {t("caseStudy.label")}
           </span>
@@ -58,13 +85,19 @@ const CaseStudy = () => {
           <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">
             {t("caseStudy.subtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+        >
           {["timeline", "role", "team"].map((key) => (
-            <div
+            <motion.div
               key={key}
+              variants={fadeUp}
               className="bg-white p-6 rounded-xl border border-slate-100"
             >
               <h3 className="text-sm font-semibold text-slate-500 mb-1">
@@ -73,31 +106,46 @@ const CaseStudy = () => {
               <p className="text-base font-medium text-slate-900">
                 {t(`caseStudy.overview.${key}.value`)}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Tech Stack */}
-        <section className="mb-16">
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="text-2xl font-bold text-slate-900 mb-6">
             {t("caseStudy.techStackTitle")}
           </h2>
 
-          <div className="flex flex-wrap gap-3">
+          <motion.div
+            variants={stagger}
+            className="flex flex-wrap gap-3"
+          >
             {TECH_STACK.map((tech) => (
-              <span
+              <motion.span
                 key={tech}
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
                 className="px-4 py-2 text-sm font-medium rounded-lg
-                bg-white border border-slate-200 text-slate-700"
+                           bg-white border border-slate-200 text-slate-700"
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        {/* Problem */}
-        <section className="mb-20">
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-20"
+        >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-red-100 rounded-lg">
               <Target size={22} className="text-red-600" />
@@ -118,10 +166,15 @@ const CaseStudy = () => {
               ))}
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Solution */}
-        <section className="mb-20">
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-20"
+        >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-green-100 rounded-lg">
               <CheckCircle size={22} className="text-green-600" />
@@ -160,10 +213,15 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Technical Decisions */}
-        <section className="mb-20">
+        <motion.section
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-20 space-y-6"
+        >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-blue-100 rounded-lg">
               <Zap size={22} className="text-blue-600" />
@@ -173,25 +231,29 @@ const CaseStudy = () => {
             </h2>
           </div>
 
-          <div className="space-y-6">
-            {decisions.map((item, i) => (
-              <div
-                key={i}
-                className="bg-white border border-slate-100 rounded-xl p-6"
-              >
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-700 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+          {decisions.map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              className="bg-white border border-slate-100 rounded-xl p-6"
+            >
+              <h3 className="text-base font-bold text-slate-900 mb-2">
+                {item.title}
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.section>
 
-        {/* Outcomes */}
-        <section className="mb-20">
+        <motion.section
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-20"
+        >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-purple-100 rounded-lg">
               <BarChart size={22} className="text-purple-600" />
@@ -208,17 +270,22 @@ const CaseStudy = () => {
               ))}
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Links */}
-        <div className="flex flex-wrap justify-between items-center gap-6 pt-8 border-t border-slate-100">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-between items-center gap-6 pt-8 border-t border-slate-100"
+        >
           <a
             href="https://github.com/NurkalamAbdurahman/GoTask-FE"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5
-            border border-slate-200 rounded-lg text-slate-700
-            hover:border-blue-600 hover:text-blue-600 transition-colors"
+                       border border-slate-200 rounded-lg text-slate-700
+                       hover:border-blue-600 hover:text-blue-600 transition-colors"
           >
             <Github size={18} />
             <span className="font-medium">
@@ -235,7 +302,7 @@ const CaseStudy = () => {
               {t("caseStudy.links.backAll")}
             </span>
           </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -236,16 +236,16 @@
         "subtitle": "Penghargaan terpilih dari kompetisi akademik dan inovasi tingkat nasional.",
         "items": [
             {
-                "title": "Finalis — Kompetisi Web Design SEFEST 2023",
-                "organizer": "Universitas Surabaya (UBAYA)",
-                "year": "2023",
-                "description": "Terpilih sebagai finalis dalam kompetisi desain web tingkat nasional dengan fokus pada UI/UX, konsistensi layout, dan komunikasi visual."
-            },
-            {
                 "title": "Juara 2 — Invention Competition 2024",
                 "organizer": "Universitas Udayana",
                 "year": "2024",
                 "description": "Meraih juara kedua melalui presentasi proyek inovasi berbasis web yang dinilai dari sisi inovasi, kegunaan, dan kelayakan teknis."
+            },
+            {
+                "title": "Finalis — Kompetisi Web Design SEFEST 2023",
+                "organizer": "Universitas Surabaya (UBAYA)",
+                "year": "2023",
+                "description": "Terpilih sebagai finalis dalam kompetisi desain web tingkat nasional dengan fokus pada UI/UX, konsistensi layout, dan komunikasi visual."
             }
         ]
     },

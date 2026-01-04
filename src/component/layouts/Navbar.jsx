@@ -68,15 +68,13 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "h-14 bg-white/95 backdrop-blur-md shadow-sm"
-          : "h-16 bg-white/80 backdrop-blur-sm"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? "h-14 bg-white/95 backdrop-blur-md shadow-sm"
+        : "h-16 bg-white/80 backdrop-blur-sm"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
-          {/* Logo — Fibonacci Primary */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
@@ -85,7 +83,6 @@ const Navbar = () => {
             Nurkalamaz
           </a>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => {
               const id = item.href.replace("#", "");
@@ -99,11 +96,10 @@ const Navbar = () => {
                   className="relative px-1 py-2"
                 >
                   <span
-                    className={`text-sm font-medium transition-colors duration-200 ${
-                      isActive
-                        ? "text-blue-600"
-                        : "text-slate-600 hover:text-blue-500"
-                    }`}
+                    className={`text-sm font-medium transition-colors duration-200 ${isActive
+                      ? "text-blue-600"
+                      : "text-slate-600 hover:text-blue-500"
+                      }`}
                   >
                     {t(`nav.${item.key}`)}
                   </span>
@@ -119,29 +115,73 @@ const Navbar = () => {
             <div className="flex items-center gap-2 pl-4 border-l border-slate-200">
               <button
                 onClick={() => setLanguage("id")}
-                className={`text-sm font-medium transition-colors ${
-                  i18n.language === "id"
-                    ? "text-blue-600"
-                    : "text-slate-500 hover:text-blue-500"
-                }`}
+                className={`text-sm font-medium transition-colors ${i18n.language === "id"
+                  ? "text-blue-600"
+                  : "text-slate-500 hover:text-blue-500"
+                  }`}
               >
                 ID
               </button>
               <span className="text-slate-300">/</span>
               <button
                 onClick={() => setLanguage("en")}
-                className={`text-sm font-medium transition-colors ${
-                  i18n.language === "en"
-                    ? "text-blue-600"
-                    : "text-slate-500 hover:text-blue-500"
-                }`}
+                className={`text-sm font-medium transition-colors ${i18n.language === "en"
+                  ? "text-blue-600"
+                  : "text-slate-500 hover:text-blue-500"
+                  }`}
               >
                 EN
               </button>
             </div>
           </div>
 
-          {/* Mobile Trigger */}
+          {isMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-sm">
+              <div className="flex flex-col px-6 py-4">
+                {navItems.map((item) => {
+                  const id = item.href.replace("#", "");
+                  const isActive = activeSection === id;
+
+                  return (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                      className={`py-3 text-sm font-medium transition-colors ${isActive
+                        ? "text-blue-600"
+                        : "text-slate-700 hover:text-blue-500"
+                        }`}
+                    >
+                      {t(`nav.${item.key}`)}
+                    </a>
+                  );
+                })}
+
+                {/* Language Switch */}
+                <div className="flex gap-4 pt-4 mt-4 border-t border-gray-200">
+                  <button
+                    onClick={() => setLanguage("id")}
+                    className={`text-sm font-medium ${i18n.language === "id"
+                      ? "text-blue-600"
+                      : "text-slate-500"
+                      }`}
+                  >
+                    ID
+                  </button>
+                  <button
+                    onClick={() => setLanguage("en")}
+                    className={`text-sm font-medium ${i18n.language === "en"
+                      ? "text-blue-600"
+                      : "text-slate-500"
+                      }`}
+                  >
+                    EN
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-600 hover:text-blue-600 transition-colors"

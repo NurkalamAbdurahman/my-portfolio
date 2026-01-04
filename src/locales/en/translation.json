@@ -236,16 +236,16 @@
         "subtitle": "Selected recognitions from national academic and innovation competitions.",
         "items": [
             {
-                "title": "Finalist — SEFEST 2023 Web Design Competition",
-                "organizer": "Universitas Surabaya (UBAYA)",
-                "year": "2023",
-                "description": "Selected as a finalist in a national-level web design competition, focusing on UI/UX design, layout consistency, and visual communication."
-            },
-            {
                 "title": "2nd Place — Invention Competition 2024",
                 "organizer": "Universitas Udayana",
                 "year": "2024",
                 "description": "Awarded 2nd place for presenting a web-based invention project, evaluated on innovation, usability, and technical feasibility."
+            },
+            {
+                "title": "Finalist — SEFEST 2023 Web Design Competition",
+                "organizer": "Universitas Surabaya (UBAYA)",
+                "year": "2023",
+                "description": "Selected as a finalist in a national-level web design competition, focusing on UI/UX design, layout consistency, and visual communication."
             }
         ]
     },

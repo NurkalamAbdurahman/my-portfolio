@@ -1,5 +1,22 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.18 }
+  }
+};
 
 const Experience = () => {
   const { t } = useTranslation();
@@ -12,43 +29,54 @@ const Experience = () => {
     >
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
-        <div className="mb-16 text-center">
+        <motion.div
+          className="mb-16 text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             {t("experience.title")}
           </h2>
           <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
             {t("experience.subtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
+        <motion.div
+          className="relative"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="absolute left-4 sm:left-1/2 top-0 h-full w-px bg-slate-200" />
 
           <div className="space-y-12">
             {items.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={fadeUp}
                 className="relative flex flex-col sm:flex-row sm:items-start"
               >
-                {/* Dot */}
                 <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2">
                   <div className="w-8 h-8 rounded-full bg-white border-2 border-blue-600 flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-blue-600" />
                   </div>
                 </div>
 
-                {/* Content */}
                 <div
-                  className={`mt-10 sm:mt-0 sm:w-1/2 ${
-                    index % 2 === 0
+                  className={`mt-10 sm:mt-0 sm:w-1/2 ${index % 2 === 0
                       ? "sm:pr-12 sm:text-right"
                       : "sm:pl-12 sm:ml-auto"
-                  }`}
+                    }`}
                 >
-                  <div className="bg-white border border-slate-100 rounded-2xl p-6">
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 280 }}
+                    className="bg-white border border-slate-100 rounded-2xl p-6"
+                  >
                     <span className="block text-sm font-medium text-slate-500 mb-2">
                       {exp.period}
                     </span>
@@ -66,12 +94,12 @@ const Experience = () => {
                         <li key={i}>{item}</li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

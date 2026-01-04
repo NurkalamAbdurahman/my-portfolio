@@ -1,7 +1,24 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Github, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import { projectsConfig } from "./projects.config";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" }
+  }
+};
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.18 }
+  }
+};
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -14,32 +31,43 @@ const Projects = () => {
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             {t("projects.sectionTitle")}
           </h2>
           <p className="text-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {t("projects.sectionSubtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Project List */}
-        <div className="space-y-12 max-w-6xl mx-auto">
+        <motion.div
+          className="space-y-12 max-w-6xl mx-auto"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {projects.map((project) => {
             const config = projectsConfig[project.id];
 
             return (
-              <article
+              <motion.article
                 key={project.id}
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 260 }}
                 className={`flex flex-col lg:flex-row gap-8 p-6 lg:p-8 rounded-2xl border
-                ${
-                  config.featured
+                ${config.featured
                     ? "border-blue-200 bg-blue-50/40"
                     : "border-slate-100 bg-white"
-                }`}
+                  }`}
               >
-                {/* Image */}
                 <div className="lg:w-2/5">
                   <div className="aspect-video lg:aspect-square rounded-xl overflow-hidden bg-slate-100">
                     <img
@@ -50,7 +78,6 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="lg:w-3/5 flex flex-col justify-between">
                   <div>
                     {config.featured && (
@@ -71,7 +98,6 @@ const Projects = () => {
                       {project.description}
                     </p>
 
-                    {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {config.tech.map((tech) => (
                         <span
@@ -85,7 +111,6 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Actions */}
                   <div className="flex gap-3 pt-4 border-t border-slate-100">
                     <a
                       href={config.githubLink}
@@ -110,13 +135,18 @@ const Projects = () => {
                     </a>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* View All */}
-        <div className="text-center mt-16">
+        <motion.div
+          className="text-center mt-16"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <a
             href="#"
             className="inline-flex items-center gap-2 px-6 py-3.5
@@ -126,7 +156,7 @@ const Projects = () => {
             {t("projects.viewAll")}
             <ExternalLink size={18} />
           </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>
