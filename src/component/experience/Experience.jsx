@@ -6,47 +6,71 @@ const Experience = () => {
   const items = t("experience.items", { returnObjects: true });
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
-      <div className="mx-auto max-w-6xl px-6">
-        
+    <section
+      id="experience"
+      className="py-24 bg-gradient-to-b from-blue-50/20 to-white"
+    >
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
         {/* Section Header */}
-        <div className="mb-14 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             {t("experience.title")}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
             {t("experience.subtitle")}
           </p>
         </div>
 
-        {/* Experience List */}
-        <div className="space-y-8">
-          {items.map((exp, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-2xl p-8"
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    {exp.role}
-                  </h3>
-                  <p className="text-gray-600 font-medium">
-                    {exp.company}
-                  </p>
-                </div>
-                <span className="text-sm text-gray-500 mt-2 md:mt-0">
-                  {exp.period}
-                </span>
-              </div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical Line */}
+          <div className="absolute left-4 sm:left-1/2 top-0 h-full w-px bg-slate-200" />
 
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {exp.description.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="space-y-12">
+            {items.map((exp, index) => (
+              <div
+                key={index}
+                className="relative flex flex-col sm:flex-row sm:items-start"
+              >
+                {/* Dot */}
+                <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2">
+                  <div className="w-8 h-8 rounded-full bg-white border-2 border-blue-600 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-blue-600" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div
+                  className={`mt-10 sm:mt-0 sm:w-1/2 ${
+                    index % 2 === 0
+                      ? "sm:pr-12 sm:text-right"
+                      : "sm:pl-12 sm:ml-auto"
+                  }`}
+                >
+                  <div className="bg-white border border-slate-100 rounded-2xl p-6">
+                    <span className="block text-sm font-medium text-slate-500 mb-2">
+                      {exp.period}
+                    </span>
+
+                    <h3 className="text-xl font-bold text-slate-900">
+                      {exp.role}
+                    </h3>
+
+                    <p className="text-base font-medium text-slate-600 mb-4">
+                      {exp.company}
+                    </p>
+
+                    <ul className="space-y-2 list-disc list-inside text-sm text-slate-700 leading-relaxed">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

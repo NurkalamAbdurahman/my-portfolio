@@ -1,26 +1,30 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Github, ExternalLink } from 'lucide-react';
-import { projectsConfig } from './projects.config';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { Github, ExternalLink } from "lucide-react";
+import { projectsConfig } from "./projects.config";
 
 const Projects = () => {
   const { t } = useTranslation();
-  const projects = t('projects.items', { returnObjects: true });
+  const projects = t("projects.items", { returnObjects: true });
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
+    <section
+      id="projects"
+      className="py-24 bg-gradient-to-b from-white to-blue-50/20"
+    >
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {t('projects.sectionTitle')}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            {t("projects.sectionTitle")}
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {t('projects.sectionSubtitle')}
+          <p className="text-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            {t("projects.sectionSubtitle")}
           </p>
         </div>
 
+        {/* Project List */}
         <div className="space-y-12 max-w-6xl mx-auto">
           {projects.map((project) => {
             const config = projectsConfig[project.id];
@@ -28,16 +32,20 @@ const Projects = () => {
             return (
               <article
                 key={project.id}
-                className={`flex flex-col lg:flex-row gap-8 p-8 rounded-2xl border
-                ${config.featured ? 'border-blue-200 bg-blue-50/30' : 'border-gray-200 bg-gray-50'}`}
+                className={`flex flex-col lg:flex-row gap-8 p-6 lg:p-8 rounded-2xl border
+                ${
+                  config.featured
+                    ? "border-blue-200 bg-blue-50/40"
+                    : "border-slate-100 bg-white"
+                }`}
               >
                 {/* Image */}
                 <div className="lg:w-2/5">
-                  <div className="aspect-video lg:aspect-square rounded-xl overflow-hidden bg-gray-100">
+                  <div className="aspect-video lg:aspect-square rounded-xl overflow-hidden bg-slate-100">
                     <img
                       src={config.image}
                       alt={project.alt}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -47,27 +55,29 @@ const Projects = () => {
                   <div>
                     {config.featured && (
                       <span className="inline-block mb-3 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">
-                        {t('projects.featuredLabel')}
+                        {t("projects.featuredLabel")}
                       </span>
                     )}
 
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
                       {project.title}
                     </h3>
 
-                    <p className="text-gray-700 font-medium mb-3">
+                    <p className="text-base font-medium text-slate-700 mb-3">
                       {project.summary}
                     </p>
 
-                    <p className="text-gray-600 mb-6">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6">
                       {project.description}
                     </p>
 
+                    {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {config.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1.5 text-sm font-medium rounded-lg bg-white border"
+                          className="px-3 py-1.5 text-xs font-medium rounded-lg
+                          bg-white border border-slate-200 text-slate-700"
                         >
                           {tech}
                         </span>
@@ -75,23 +85,28 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 pt-4 border-t">
+                  {/* Actions */}
+                  <div className="flex gap-3 pt-4 border-t border-slate-100">
                     <a
                       href={config.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2.5 border rounded-lg"
+                      className="inline-flex items-center gap-2 px-4 py-2.5
+                      border border-slate-200 rounded-lg text-slate-700
+                      hover:border-blue-600 hover:text-blue-600 transition-colors"
                     >
                       <Github size={18} />
-                      {t('projects.github')}
+                      {t("projects.github")}
                     </a>
 
                     <a
                       href={config.caseStudyLink}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-600 text-white"
+                      className="inline-flex items-center gap-2 px-4 py-2.5
+                      rounded-lg bg-blue-600 text-white font-medium
+                      hover:bg-blue-700 transition-colors"
                     >
                       <ExternalLink size={18} />
-                      {t('projects.caseStudy')}
+                      {t("projects.caseStudy")}
                     </a>
                   </div>
                 </div>
@@ -100,12 +115,19 @@ const Projects = () => {
           })}
         </div>
 
+        {/* View All */}
         <div className="text-center mt-16">
-          <span className="inline-flex items-center gap-2 px-6 py-3.5 border rounded-lg">
-            {t('projects.viewAll')}
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-6 py-3.5
+            border border-slate-200 rounded-xl text-slate-700
+            hover:border-blue-600 hover:text-blue-600 transition-colors"
+          >
+            {t("projects.viewAll")}
             <ExternalLink size={18} />
-          </span>
+          </a>
         </div>
+
       </div>
     </section>
   );

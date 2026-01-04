@@ -15,20 +15,20 @@ const Navbar = () => {
     { key: "about", href: "#about" },
     { key: "skills", href: "#skills" },
     { key: "projects", href: "#projects" },
-    { key: "experience", href: "#experience" }
+    { key: "experience", href: "#experience" },
   ];
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
-    
-    // Update active section based on scroll position with delay
-    const sections = navItems.map(item => item.href.replace('#', ''));
-    const scrollPosition = window.scrollY + 150; // Offset untuk delay visual
-    
+
+    const sections = navItems.map((item) =>
+      item.href.replace("#", "")
+    );
+    const scrollPosition = window.scrollY + 150;
+
     for (const section of sections.reverse()) {
       const element = document.getElementById(section);
       if (element && scrollPosition >= element.offsetTop) {
-        // Hanya update jika tidak ada klik baru-baru ini
         if (!clickedSection || Date.now() - clickedSection.timestamp > 1000) {
           setActiveSection(section);
         }
@@ -44,29 +44,21 @@ const Navbar = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    const sectionId = href.replace('#', '');
-    
-    // Set clicked section dengan timestamp
-    setClickedSection({
-      id: sectionId,
-      timestamp: Date.now()
-    });
-    setActiveSection(sectionId);
-    
-    // Smooth scroll dengan sedikit delay untuk visual feedback
+    const id = href.replace("#", "");
+
+    setClickedSection({ id, timestamp: Date.now() });
+    setActiveSection(id);
+
     setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ 
+      document.querySelector(href)?.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }, 100);
-    
+
     setIsMenuOpen(false);
-    
-    // Reset clicked section setelah 1.5 detik
-    setTimeout(() => {
-      setClickedSection(null);
-    }, 1500);
+
+    setTimeout(() => setClickedSection(null), 1500);
   };
 
   const setLanguage = (lang) => {
@@ -75,77 +67,72 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-lg py-2" 
-        : "bg-white/80 backdrop-blur-sm py-4"
-    }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-12">
-          
-          {/* Logo */}
-          <a 
-            href="#home" 
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "h-14 bg-white/95 backdrop-blur-md shadow-sm"
+          : "h-16 bg-white/80 backdrop-blur-sm"
+      }`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex items-center justify-between h-full">
+          {/* Logo — Fibonacci Primary */}
+          <a
+            href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="text-2xl font-bold tracking-tight transition-all hover:scale-105"
+            className="text-xl lg:text-2xl font-bold tracking-tight text-slate-900 transition-opacity hover:opacity-80"
           >
-            <span className="text-slate-900">Nurkalam</span>
+            Nurkalamaz
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {/* Nav Items */}
-            <div className="flex items-center gap-8">
-              {navItems.map(item => {
-                const sectionId = item.href.replace('#', '');
-                const isActive = activeSection === sectionId;
-                const wasClicked = clickedSection?.id === sectionId;
-                
-                return (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className="relative group"
-                  >
-                    <span className={`text-sm font-medium transition-all duration-300 ${
-                      isActive 
-                        ? "text-blue-600 font-semibold" 
-                        : "text-slate-600 hover:text-blue-500"
-                    } ${wasClicked ? "scale-110" : ""}`}>
-                      {t(`nav.${item.key}`)}
-                    </span>
-                    
-                    {/* Animated underline for active state */}
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 rounded-full animate-slideIn"></span>
-                    )}
-                    
-                    {/* Hover underline effect */}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 rounded-full transition-all duration-300 group-hover:w-full"></span>
-                  </a>
-                );
-              })}
-            </div>
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.map((item) => {
+              const id = item.href.replace("#", "");
+              const isActive = activeSection === id;
 
-            {/* Language Toggle — Clean */}
-            <div className="flex items-center gap-1 ml-4 pl-4 border-l border-slate-200">
+              return (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="relative px-1 py-2"
+                >
+                  <span
+                    className={`text-sm font-medium transition-colors duration-200 ${
+                      isActive
+                        ? "text-blue-600"
+                        : "text-slate-600 hover:text-blue-500"
+                    }`}
+                  >
+                    {t(`nav.${item.key}`)}
+                  </span>
+
+                  {isActive && (
+                    <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-blue-600 rounded-full" />
+                  )}
+                </a>
+              );
+            })}
+
+            {/* Language — Lowest Priority */}
+            <div className="flex items-center gap-2 pl-4 border-l border-slate-200">
               <button
                 onClick={() => setLanguage("id")}
-                className={`px-3 py-1 text-sm font-medium transition-all duration-300 ${
-                  i18n.language === "id" 
-                    ? "text-blue-600 font-semibold" 
+                className={`text-sm font-medium transition-colors ${
+                  i18n.language === "id"
+                    ? "text-blue-600"
                     : "text-slate-500 hover:text-blue-500"
                 }`}
               >
                 ID
               </button>
-              <span className="text-slate-300">|</span>
+              <span className="text-slate-300">/</span>
               <button
                 onClick={() => setLanguage("en")}
-                className={`px-3 py-1 text-sm font-medium transition-all duration-300 ${
-                  i18n.language === "en" 
-                    ? "text-blue-600 font-semibold" 
+                className={`text-sm font-medium transition-colors ${
+                  i18n.language === "en"
+                    ? "text-blue-600"
                     : "text-slate-500 hover:text-blue-500"
                 }`}
               >
@@ -154,69 +141,14 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Trigger */}
           <button
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-slate-600 hover:text-blue-600 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg text-slate-600 hover:text-blue-600 transition-colors"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-xl rounded-b-2xl overflow-hidden">
-            <div className="px-2 py-3">
-              {navItems.map(item => {
-                const sectionId = item.href.replace('#', '');
-                const isActive = activeSection === sectionId;
-                
-                return (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={`block px-4 py-3.5 my-1 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      isActive 
-                        ? "text-blue-600 font-semibold bg-blue-50" 
-                        : "text-slate-600 hover:text-blue-500 hover:bg-slate-50"
-                    }`}
-                  >
-                    {t(`nav.${item.key}`)}
-                    {isActive && (
-                      <span className="ml-2 inline-block w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse"></span>
-                    )}
-                  </a>
-                );
-              })}
-              
-              {/* Language Toggle - Mobile */}
-              <div className="flex items-center justify-center gap-6 px-4 py-6 mt-2 border-t border-slate-100">
-                <button
-                  onClick={() => setLanguage("id")}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    i18n.language === "id" 
-                      ? "text-blue-600 font-semibold" 
-                      : "text-slate-500 hover:text-blue-500"
-                  }`}
-                >
-                  🇮🇩 Indonesia
-                </button>
-                <button
-                  onClick={() => setLanguage("en")}
-                  className={`text-sm font-medium transition-all duration-300 ${
-                    i18n.language === "en" 
-                      ? "text-blue-600 font-semibold" 
-                      : "text-slate-500 hover:text-blue-500"
-                  }`}
-                >
-                  🇺🇸 English
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
